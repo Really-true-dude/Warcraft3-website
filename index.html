@@ -3,13 +3,17 @@
     <head>
         <title>Warcraft 3</title>
         <meta charset="UTF-8">
-        <link href='https://fonts.googleapis.com/css?family=Abyssinica SIL' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css?family=Abyssinica+SIL" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="style.css"></noscript>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="scripts.js" defer></script>
     </head>
     <body>
         <header>
             <div class="headerContainer">
+            <div class="toggle-button">☰</div>
                 <div class="item"><img src="images/icons/logo.png" height="40px"></div>
                 <div class="headerNav">
                     <div class="navItem">Home</div>
@@ -24,8 +28,19 @@
         <!-- main part -->
         <main>
             <div class = "homeWelcome">
-                <h1 class="homeText">Welcome!</h1>
-                <h3 class="homeText">To the Best Warcraft 3 website.</h3>
+                <h1 class="homeText">Welcome to the World of Warcraft</h1>
+                <br>
+                <p class="tagline">The ultimate fan site for the epic game franchise</p>
+                <br>
+                <p class="value-prop">
+                    Your #1 resource for the latest news, strategies, forums and more for the Warcraft Universe
+                </p>
+                <br>
+                <a href="fractions.html" class="btn">Explore the Factions</a>
+
+                <img src="images/races.jpg" alt="Collage of Warcraft races">
+
+                <p class="stats">Over <strong> 100 million</strong> players have been drawn into the magical World of Warcraft</p>
             </div>
             <div class = "WarcraftReforgedHeader">
                 <h1 class = "infoWarcraftHeader">Warcraft Reforged</h1>
@@ -148,7 +163,7 @@
                                 <li>Tournaments</li>
                             </ul>
                         </div>
-                        <img src = "images/icons/footer-logo.png" width = 300px>
+                        <img src = "images/icons/footer-logo.png" width = "300px">
                         <div class="listRight">
                             <h3>About</h3>
                             <ul>
@@ -166,20 +181,43 @@
                         Our team of seasoned professionals is dedicated to delivering top-notch experiences tailored to your specific requirements. Trust us to elevate your Warcraft 3 journey to new heights with our unparalleled services and passion for the game.
                         </p>
                     </div>
-                    <div class = "socialLinks">
-                            <img class = "socialIcon" src = "images/icons/insta.png">
-                            <img class = "socialIcon" src = "images/icons/telegram.png">
-                            <img class = "socialIcon" src = "images/icons/twitter.png">
-                            <img class = "socialIcon" src = "images/icons/facebook.png">
+                    <div class="socialLinks">
+                        <button class="slide-left">←</button>
+                        <div class="slider">
+                            <div class="slide">
+                                <img class="socialIcon" src="images/icons/insta.png">
+                                <img class="socialIcon" src="images/icons/telegram.png">
+                                <img class="socialIcon" src="images/icons/twitter.png">
+                                <img class="socialIcon" src="images/icons/facebook.png">
+                            </div>
+                        </div>
+                        <button class="slide-right">→</button>
                     </div>
                     <div class = "contactText">
                         <p>Email: some-email@gmail.com</p>
                         <p>Telephone: 0-777-777-123</p>
                     </div>
                     <p class="copyrightText">Andrei Kornev 2024.</p>
-
                 </div>
             </div>
         </footer>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-button');
+            const headerNav = document.querySelector('.headerNav');
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.headerNav .navItem');
+
+            toggleButton.addEventListener('click', () => {
+                headerNav.classList.toggle('collapsed');
+            });
+
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        </script>
     </body>
 </html>
